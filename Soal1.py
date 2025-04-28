@@ -33,3 +33,23 @@ def hitung_total_hari(tahun, bulan, hari):
     total_hari += hari
 
     return total_hari
+
+tahun_sekarang = 2025
+bulan_sekarang = 4
+hari_sekarang = 28
+
+total_hari_sekarang = hitung_total_hari(tahun_sekarang, bulan_sekarang, hari_sekarang)
+
+tanggal_ditemukan = re.findall(r'\d{4}-\d{2}-\d{2}', teks)
+
+# Proses setiap tanggal
+for tgl in tanggal_ditemukan:
+    tahun, bulan, hari = map(int, tgl.split('-'))
+
+    total_hari_tanggal = hitung_total_hari(tahun, bulan, hari)
+    selisih = total_hari_sekarang - total_hari_tanggal
+
+    # Format DD-MM-YYYY
+    tgl_format_baru = f"{hari:02d}-{bulan:02d}-{tahun}"
+
+    print(f"{tgl_format_baru} {tahun}-{bulan:02d}-{hari:02d} 00:00:00 selisih {selisih} hari")
